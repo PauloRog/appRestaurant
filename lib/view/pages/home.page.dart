@@ -70,6 +70,26 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
+                  actions: <Widget>[
+                    Observer(
+                      builder: (context) {
+                        return (_store.icons != null)
+                        ? (_store.index == 3)
+                        ? IconButton(
+                          icon: SvgPicture.network(
+                            _store.icons[4].link,
+                            width: 32,
+                            height: 32,
+                          ),
+                          onPressed: () {
+                            print('pressionado');
+                          }
+                          )
+                        : Text('')
+                        : Text('');
+                      },
+                    ),
+                  ],
                 ),
                 body: PageView.builder(
                   itemCount: _pages.length,
