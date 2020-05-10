@@ -14,6 +14,7 @@ class _SelectPageState extends State<SelectPage> {
           MaterialPageRoute(
             builder: (context)
             => HomePage(select: select,)
+
           )
         );
   }
@@ -64,7 +65,7 @@ class _SelectPageState extends State<SelectPage> {
                           child: SizedBox.expand(
                             child: FlatButton(
                               onPressed: (){
-                                goHome('Restaurant');
+                                goHome('restaurant');
                               },
                               child: Text(
                                 titleRestaurant,
@@ -97,7 +98,9 @@ class _SelectPageState extends State<SelectPage> {
                           ),
                           child: SizedBox.expand(
                             child: FlatButton(
-                              onPressed: (){},
+                              onPressed: (){
+                                goHome('pub');
+                              },
                               child: Text(
                                 titlePub,
                                 style: TextStyle(
