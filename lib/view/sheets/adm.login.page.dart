@@ -19,10 +19,15 @@ class _AdmLogin extends State<AdmLogin> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Digite Sua Senha",
+              "Digite Sua Senha:",
               style: TextStyle(
                 fontSize: 26,
                 color: Colors.white,
+              ),
+            ),
+            Container(
+              child:TextField(
+                decoration: InputDecoration.collapsed(hintText: 'Blá Blá'),
               ),
             ),
             Container(
