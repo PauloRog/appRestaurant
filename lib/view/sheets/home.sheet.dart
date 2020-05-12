@@ -16,9 +16,12 @@ class _HomeSheetState extends State<HomeSheet> {
             color: Colors.red,
           ),
           Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              color: Colors.white,
+            ),
             margin:
                 const EdgeInsets.symmetric(horizontal: 5.0, vertical: 100.0),
-            color: Colors.black,
           ),
         ],
       ),
