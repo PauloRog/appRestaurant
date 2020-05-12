@@ -1,4 +1,4 @@
-import 'package:app_restaurant_test/model/colors.rgba.dart';
+import 'package:app_restaurant_test/models/colors.rgba.dart';
 import 'package:app_restaurant_test/store/bottom.navigation.bar.store.dart';
 import 'package:app_restaurant_test/view/sheets/contact.sheet.dart';
 import 'package:app_restaurant_test/view/sheets/drink.sheet.dart';
@@ -49,43 +49,46 @@ class _HomePageState extends State<HomePage> {
             ColorsRgba background =
                 ColorsRgba.fromJson(snapshot.data['background']);
             return Scaffold(
-              appBar: AppBar(
-                leading: IconButton(
-                  icon: Icon(Icons.arrow_back,
+              appBar: PreferredSize(
+                preferredSize: Size.fromHeight(50.0), // here the desired height
+                child: AppBar(
+                  leading: IconButton(
+                    icon: Icon(Icons.arrow_back,
+                        color: Color.fromRGBO(colorText.r, colorText.g,
+                            colorText.b, colorText.o)),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                  centerTitle: true,
+                  backgroundColor: Color.fromRGBO(
+                      background.r, background.g, background.b, background.o),
+                  title: Text(
+                    titleAppBar,
+                    style: TextStyle(
+                      fontFamily: "Marguerite",
                       color: Color.fromRGBO(
-                          colorText.r, colorText.g, colorText.b, colorText.o)),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-                centerTitle: true,
-                backgroundColor: Color.fromRGBO(
-                    background.r, background.g, background.b, background.o),
-                title: Text(
-                  titleAppBar,
-                  style: TextStyle(
-                    fontFamily: "Marguerite",
-                    color: Color.fromRGBO(
-                        colorText.r, colorText.g, colorText.b, background.o),
+                          colorText.r, colorText.g, colorText.b, background.o),
+                    ),
                   ),
+                  actions: <Widget>[
+                    Observer(
+                      builder: (context) {
+                        return (_store.icons != null)
+                            ? (_store.index == 3)
+                                ? IconButton(
+                                    icon: SvgPicture.network(
+                                      _store.icons[4].link,
+                                      width: 32,
+                                      height: 32,
+                                    ),
+                                    onPressed: () {
+                                      print('pressionado');
+                                    })
+                                : Text('')
+                            : Text('');
+                      },
+                    ),
+                  ],
                 ),
-                actions: <Widget>[
-                  Observer(
-                    builder: (context) {
-                      return (_store.icons != null)
-                          ? (_store.index == 3)
-                              ? IconButton(
-                                  icon: SvgPicture.network(
-                                    _store.icons[4].link,
-                                    width: 32,
-                                    height: 32,
-                                  ),
-                                  onPressed: () {
-                                    print('pressionado');
-                                  })
-                              : Text('')
-                          : Text('');
-                    },
-                  ),
-                ],
               ),
               body: PageView.builder(
                 itemCount: _pages.length,
@@ -93,65 +96,68 @@ class _HomePageState extends State<HomePage> {
                 onPageChanged: _store.setIndex,
                 controller: _pageController,
               ),
-              bottomNavigationBar: Observer(builder: (context) {
-                return (_store.icons != null)
-                    ? BottomNavigationBar(
-                        currentIndex: _store.index,
-                        selectedItemColor: Colors.blue,
-                        unselectedItemColor: Color.fromRGBO(
-                            colorText.r, colorText.g, colorText.b, colorText.o),
-                        items: [
-                          BottomNavigationBarItem(
-                            icon: SvgPicture.network(
-                              _store.icons[0].link,
-                              width: 32,
-                              height: 32,
+              bottomNavigationBar: SizedBox(
+                height: 50,
+                child: Observer(builder: (context) {
+                  return (_store.icons != null)
+                      ? BottomNavigationBar(
+                          currentIndex: _store.index,
+                          selectedItemColor: Colors.blue,
+                          unselectedItemColor: Color.fromRGBO(colorText.r,
+                              colorText.g, colorText.b, colorText.o),
+                          items: [
+                            BottomNavigationBarItem(
+                              icon: SvgPicture.network(
+                                _store.icons[0].link,
+                                width: 20,
+                                height: 20,
+                              ),
+                              title: Text(_store.icons[0].name),
+                              backgroundColor: Color.fromRGBO(background.r,
+                                  background.g, background.b, background.o),
                             ),
-                            title: Text(_store.icons[0].name),
-                            backgroundColor: Color.fromRGBO(background.r,
-                                background.g, background.b, background.o),
-                          ),
-                          BottomNavigationBarItem(
-                            icon: SvgPicture.network(
-                              _store.icons[1].link,
-                              width: 32,
-                              height: 32,
+                            BottomNavigationBarItem(
+                              icon: SvgPicture.network(
+                                _store.icons[1].link,
+                                width: 20,
+                                height: 20,
+                              ),
+                              title: Text(_store.icons[1].name),
+                              backgroundColor: Color.fromRGBO(background.r,
+                                  background.g, background.b, background.o),
                             ),
-                            title: Text(_store.icons[1].name),
-                            backgroundColor: Color.fromRGBO(background.r,
-                                background.g, background.b, background.o),
-                          ),
-                          BottomNavigationBarItem(
-                            icon: SvgPicture.network(
-                              _store.icons[2].link,
-                              width: 32,
-                              height: 32,
+                            BottomNavigationBarItem(
+                              icon: SvgPicture.network(
+                                _store.icons[2].link,
+                                width: 20,
+                                height: 20,
+                              ),
+                              title: Text(_store.icons[2].name),
+                              backgroundColor: Color.fromRGBO(background.r,
+                                  background.g, background.b, background.o),
                             ),
-                            title: Text(_store.icons[2].name),
-                            backgroundColor: Color.fromRGBO(background.r,
-                                background.g, background.b, background.o),
-                          ),
-                          BottomNavigationBarItem(
-                            icon: SvgPicture.network(
-                              _store.icons[3].link,
-                              width: 32,
-                              height: 32,
+                            BottomNavigationBarItem(
+                              icon: SvgPicture.network(
+                                _store.icons[3].link,
+                                width: 20,
+                                height: 20,
+                              ),
+                              title: Text(_store.icons[3].name),
+                              backgroundColor: Color.fromRGBO(background.r,
+                                  background.g, background.b, background.o),
                             ),
-                            title: Text(_store.icons[3].name),
-                            backgroundColor: Color.fromRGBO(background.r,
-                                background.g, background.b, background.o),
-                          ),
-                        ],
-                        onTap: (index) {
-                          _store.setIndex(index);
-                          _pageController.animateToPage(
-                            _store.index,
-                            duration: Duration(milliseconds: 200),
-                            curve: Curves.linear,
-                          );
-                        })
-                    : CircularProgressIndicator();
-              }),
+                          ],
+                          onTap: (index) {
+                            _store.setIndex(index);
+                            _pageController.animateToPage(
+                              _store.index,
+                              duration: Duration(milliseconds: 200),
+                              curve: Curves.linear,
+                            );
+                          })
+                      : CircularProgressIndicator();
+                }),
+              ),
             );
         }
       },

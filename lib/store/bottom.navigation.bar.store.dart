@@ -1,4 +1,4 @@
-import 'package:app_restaurant_test/model/icon.model.dart';
+import 'package:app_restaurant_test/models/icon.model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mobx/mobx.dart';
 part 'bottom.navigation.bar.store.g.dart';
@@ -6,13 +6,11 @@ part 'bottom.navigation.bar.store.g.dart';
 class BottomStore = _BottomStoreBase with _$BottomStore;
 
 abstract class _BottomStoreBase with Store {
-
   @observable
   int index = 0;
 
   @observable
   List<MyIcon> icons;
-
 
   @action
   void setIcons(String select) {
@@ -23,14 +21,12 @@ abstract class _BottomStoreBase with Store {
 
   Future<List<MyIcon>> getIcons(String select) async {
     List<MyIcon> _icons = List<MyIcon>();
-    QuerySnapshot snapshot
-    = await Firestore
-    .instance
-    .collection(select)
-    .document('theme')
-    .collection('appBar')
-    .getDocuments();
-    
+    QuerySnapshot snapshot = await Firestore.instance
+        .collection(select)
+        .document('theme')
+        .collection('appBar')
+        .getDocuments();
+
     List<DocumentSnapshot> documents = snapshot.documents.toList();
     documents.forEach((f) {
       _icons.add(MyIcon.fromJson(f.data));
