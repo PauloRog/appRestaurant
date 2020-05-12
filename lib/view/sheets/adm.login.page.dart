@@ -23,6 +23,9 @@ class _AdmLogin extends State<AdmLogin> {
                   color: Colors.white,
                 ),
               ),
+              SizedBox(
+                height: 40,
+              ),
               Container(
                 child: TextField(
                   obscureText: true,
@@ -31,9 +34,11 @@ class _AdmLogin extends State<AdmLogin> {
                     hintText: "Senha",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(32)),
-                        fillColor: Color(0)
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 40,
               ),
               Container(
                 alignment: Alignment.center,
