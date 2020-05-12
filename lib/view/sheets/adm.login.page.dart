@@ -1,3 +1,4 @@
+import 'package:app_restaurant_test/models/appBarGradient.dart';
 import 'package:app_restaurant_test/view/sheets/settings.all.sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,24 @@ class _AdmLogin extends State<AdmLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0), // here the desired height
+        child: AppBar(
+          flexibleSpace: AppBarGradient(),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          centerTitle: true,
+          title: Text(
+            "Twin’s Bar & Restaurant",
+            style: TextStyle(
+              fontFamily: "Marguerite",
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
       body: Center(
         child: Container(
           color: Colors.white,
@@ -52,10 +71,11 @@ class _AdmLogin extends State<AdmLogin> {
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [
+                    colors: <Color>[
                       Color.fromRGBO(113, 00, 00, 1),
                       Color.fromRGBO(187, 98, 98, 1),
                     ],
+                    tileMode: TileMode.clamp,
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
@@ -65,16 +85,14 @@ class _AdmLogin extends State<AdmLogin> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context)
-                            => SettAll(),
-                          )
-                      );
+                            builder: (context) => SettAll(),
+                          ));
                     },
                     child: Text(
                       "Continuar",
                       style: TextStyle(
                         fontSize: 26,
-                        color: Colors.black,
+                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -84,6 +102,7 @@ class _AdmLogin extends State<AdmLogin> {
           ),
         ),
       ),
+      bottomNavigationBar: ,
     );
   }
 }
