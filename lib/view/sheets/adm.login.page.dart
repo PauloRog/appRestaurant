@@ -1,5 +1,8 @@
+import 'package:app_restaurant_test/view/sheets/settings.all.sheet.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:app_restaurant_test/view/pages/home.page.dart';
+
+//import 'package:app_restaurant_test/view/pages/home.page.dart';
 
 class AdmLogin extends StatefulWidget {
   @override
@@ -12,7 +15,7 @@ class _AdmLogin extends State<AdmLogin> {
     return Scaffold(
       body: Center(
         child: Container(
-          color: Colors.purple,
+          color: Colors.white,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -20,30 +23,31 @@ class _AdmLogin extends State<AdmLogin> {
                 "Digite Sua Senha:",
                 style: TextStyle(
                   fontSize: 26,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               SizedBox(
-                height: 40,
+                height: 10,
               ),
               Container(
+                padding: const EdgeInsets.all(35.0),
                 child: TextField(
                   obscureText: true,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
                     hintText: "Senha",
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(32)),
+                        borderRadius: BorderRadius.circular(16)),
                   ),
                 ),
               ),
               SizedBox(
-                height: 40,
+                height: 10,
               ),
               Container(
                 alignment: Alignment.center,
-                height: 60,
-                width: 185,
+                height: 50,
+                width: 214,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
@@ -58,7 +62,13 @@ class _AdmLogin extends State<AdmLogin> {
                 child: SizedBox.expand(
                   child: FlatButton(
                     onPressed: () {
-                      print("pressionado demais");
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context)
+                            => SettAll(),
+                          )
+                      );
                     },
                     child: Text(
                       "Continuar",
@@ -69,9 +79,6 @@ class _AdmLogin extends State<AdmLogin> {
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 20,
               ),
             ],
           ),
