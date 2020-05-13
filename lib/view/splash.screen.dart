@@ -41,6 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       image: NetworkImage(background),
                       fit: BoxFit.cover,
                       height: double.infinity,
+                      width: double.infinity,
                     ),
                     Center(
                       child: Column(
