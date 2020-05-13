@@ -1,4 +1,4 @@
-import 'package:app_restaurant_test/view/splash.screen.dart';
+import 'package:app_restaurant_test/view/pages/splash.screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());

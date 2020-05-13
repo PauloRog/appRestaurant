@@ -2,27 +2,27 @@ import 'package:app_restaurant_test/view/pages/home.page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class SelectPage extends StatefulWidget {
-  @override
-  _SelectPageState createState() => _SelectPageState();
-}
-
-class _SelectPageState extends State<SelectPage> {
-  void goHome(String select) {
+class SelectionPage extends StatelessWidget {
+  
+  void goHome(BuildContext context, String select) {
     Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context)
-            => HomePage(select: select,)
-
-          )
-        );
+      context,
+      MaterialPageRoute(
+        builder: (context)
+        => HomePage(select: select,)
+      ),
+    );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: StreamBuilder<DocumentSnapshot>(
-        stream: Firestore.instance.collection('standard').document('selectPage').snapshots(),
+      body: StreamBuilder<DocumentSnapshot> (
+        stream: Firestore
+        .instance
+        .collection('standard')
+        .document('selectPage')
+        .snapshots(),
         builder: (context, snapshot) {
           switch(snapshot.connectionState) {
             case ConnectionState.none:
@@ -59,17 +59,21 @@ class _SelectPageState extends State<SelectPage> {
                               ],
                             ),
                             borderRadius: BorderRadius.all(
-                              Radius.circular(10)
+                              Radius.circular(10),
+                            ),
+                            border: Border.all(
+                              width: 3,
                             ),
                           ),
                           child: SizedBox.expand(
                             child: FlatButton(
-                              onPressed: (){
-                                goHome('restaurant');
+                              onPressed: () {
+                                goHome(context, 'restaurant');
                               },
                               child: Text(
                                 titleRestaurant,
                                 style: TextStyle(
+                                  fontFamily: 'Capriola',
                                   color: Colors.white,
                                 ),
                               ),
@@ -93,18 +97,22 @@ class _SelectPageState extends State<SelectPage> {
                               ],
                             ),
                             borderRadius: BorderRadius.all(
-                              Radius.circular(10)
+                              Radius.circular(10),
                             ),
+                            border: Border.all(
+                              width: 3,
+                            )
                           ),
                           child: SizedBox.expand(
                             child: FlatButton(
-                              onPressed: (){
-                                goHome('pub');
+                              onPressed: () {
+                                goHome(context, 'pub');
                               },
                               child: Text(
                                 titlePub,
                                 style: TextStyle(
                                   color: Colors.white,
+                                  fontFamily: 'Capriola',
                                 ),
                               ),
                             ),
@@ -112,11 +120,11 @@ class _SelectPageState extends State<SelectPage> {
                         ),
                       ],
                     ),
-                  ),           
+                  ),
                 ],
               );
           }
-        }
+        },
       ),
     );
   }
