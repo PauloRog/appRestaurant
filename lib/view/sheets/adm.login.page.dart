@@ -39,6 +39,7 @@ class _AdmLogin extends State<AdmLogin> {
               Text(
                 "Digite Sua Senha:",
                 style: TextStyle(
+                  fontFamily: "Capriola",
                   fontSize: 26,
                   color: Colors.black,
                 ),
@@ -89,6 +90,7 @@ class _AdmLogin extends State<AdmLogin> {
                     child: Text(
                       "Continuar",
                       style: TextStyle(
+                        fontFamily: "Capriola",
                         fontSize: 26,
                         color: Colors.white,
                       ),
