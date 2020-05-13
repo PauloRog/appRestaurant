@@ -68,6 +68,12 @@ flutter:
     - family: Marguerite
       fonts:
         - asset: assets/fonts/marguerite.ttf
+    - family: Rock Salt
+      fonts:
+        - asset: assets/fonts/RockSalt-Regular.ttf
+    - family: Stint Ultra
+      fonts:
+        - asset: assets/fonts/StintUltraExpanded-Regular.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

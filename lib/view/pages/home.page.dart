@@ -10,13 +10,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
 
   HomePage({Key key, this.select}) : super(key:key);
+
   final String select;
 
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   BottomStore _store = BottomStore();
-  List<Widget> _pages = [HomeSheet(), FoodSheet(), DrinkSheet(), ContactSheet()];
+  
   PageController _controller = PageController();
 
   void goAdmin(BuildContext context) {
@@ -31,9 +37,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _store.setIcons(select);
+    _store.setIcons(widget.select);
+    List<Widget> _pages = [
+      HomeSheet(select: widget.select,),
+      FoodSheet(),
+      DrinkSheet(),
+      ContactSheet()
+    ];
     return StreamBuilder(
-      stream: Firestore.instance.collection(select).document('theme').snapshots(),
+      stream: Firestore.instance.collection(widget.select).document('theme').snapshots(),
       builder: (context, snapshot) {
         switch(snapshot.connectionState) {
           case ConnectionState.none:
