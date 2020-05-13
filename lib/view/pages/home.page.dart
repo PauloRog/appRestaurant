@@ -20,7 +20,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   BottomStore _store = BottomStore();
-  List<Widget> _pages = [HomeSheet(), FoodSheet(), DrinkSheet(), ContactSheet(), AdmLogin(),];
+  List<Widget> _pages = [
+    HomeSheet(),
+    FoodSheet(),
+    DrinkSheet(),
+    ContactSheet(),
+    AdmLogin(),
+  ];
   PageController _pageController = PageController();
 
   @override
@@ -69,25 +75,22 @@ class _HomePageState extends State<HomePage> {
                     Observer(
                       builder: (context) {
                         return (_store.icons != null)
-                        ? (_store.index == 3)
-                        ? IconButton(
-                          icon: SvgPicture.network(
-                            _store.icons[4].link,
-                            width: 32,
-                            height: 32,
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context)
-                                    => AdmLogin(),
-                                )
-                            );
-                          }
-                          )
-                        : Text('')
-                        : Text('');
+                            ? (_store.index == 3)
+                                ? IconButton(
+                                    icon: SvgPicture.network(
+                                      _store.icons[4].link,
+                                      width: 32,
+                                      height: 32,
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => AdmLogin(),
+                                          ));
+                                    })
+                                : Text('')
+                            : Text('');
                       },
                     ),
                   ],
