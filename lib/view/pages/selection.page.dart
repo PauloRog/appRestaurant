@@ -42,6 +42,7 @@ class _SelectPageState extends State<SelectPage> {
                       image: NetworkImage(background),
                       fit: BoxFit.cover,
                       height: double.infinity,
+                      width: double.infinity,
                     ),
                     Center(
                       child: Column(

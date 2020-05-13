@@ -48,7 +48,6 @@ class _FoodSheetState extends State<FoodSheet> {
                       margin: const EdgeInsets.symmetric(
                           horizontal: 5.0, vertical: 5.0),
                       alignment: Alignment.center,
-                      height: 100.0,
                       child: Container(
                         alignment: Alignment.center,
                         child: Row(
@@ -64,9 +63,56 @@ class _FoodSheetState extends State<FoodSheet> {
                                 ),
                               ),
                             ),
-                            Column(
-                              children: <Widget>[],
-                            ),
+                            Expanded(
+                              child: Container(
+                                margin: const EdgeInsets.symmetric(
+                                    horizontal: 10.0, vertical: 5.0),
+                                child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          "Titulo: bla bla blaaa aaaaaa aaaaaaa aaa",
+                                          style: TextStyle(
+                                            fontFamily: "Capriola",
+                                            fontSize: 18.0,
+                                            color: Color.fromRGBO(0, 0, 0, 1),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "Dgfukyvhjvkyufvgcuygctufhvyufhjvghfuibghfhghvyuhghcyuhbvctgbctygvyuhbvcyubvgjhyghbhghyuhiukbgjhygoijh.",
+                                          style: TextStyle(
+                                            fontFamily: "Capriola",
+                                            fontSize: 12.0,
+                                            color: Color.fromRGBO(
+                                                133, 163, 159, 1),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Align(
+                                        alignment: Alignment.bottomRight,
+                                        child: Text(
+                                          "R\$20000,00",
+                                          style: TextStyle(
+                                            fontFamily: "Capriola",
+                                            fontSize: 18.0,
+                                            color: Color.fromRGBO(0, 0, 0, 1),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       ),
