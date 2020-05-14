@@ -19,16 +19,17 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   BottomStore _store = BottomStore();
-  List<Widget> _pages = [
-    HomeSheet(),
-    FoodSheet(),
-    DrinkSheet(),
-    ContactSheet()
-  ];
+  
   PageController _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> _pages = [
+      HomeSheet(select: widget.select),
+      FoodSheet(select: widget.select),
+      DrinkSheet(select: widget.select),
+      ContactSheet(select: widget.select)
+    ];
     _store.setIcons(widget.select);
     return StreamBuilder(
       stream: Firestore.instance
