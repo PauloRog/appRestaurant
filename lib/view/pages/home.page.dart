@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
       HomeSheet(select: widget.select,),
       FoodSheet(),
       DrinkSheet(),
-      ContactSheet()
+      ContactSheet(select: widget.select,),
     ];
     return StreamBuilder(
       stream: Firestore.instance.collection(widget.select).document('theme').snapshots(),

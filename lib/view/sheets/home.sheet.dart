@@ -8,7 +8,10 @@ class HomeSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: Firestore.instance.collection(select).document('home').snapshots(),
+      stream: Firestore.instance
+        .collection(select)
+        .document('home')
+        .snapshots(),
       builder: (context, snapshot) {
         switch(snapshot.connectionState) {
           case ConnectionState.none:
@@ -30,7 +33,7 @@ class HomeSheet extends StatelessWidget {
                 ),
                 Center(
                   child: Container(
-                    height: 403,
+                    height: 450,
                     width: 350,
                     decoration: BoxDecoration(
                       color: Color.fromRGBO(255, 255, 255, 0.8),
@@ -47,6 +50,7 @@ class HomeSheet extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 18,
+                                fontWeight: FontWeight.bold,
                                 fontFamily: 'Rock Salt',
                               ),
                             ),
@@ -58,7 +62,6 @@ class HomeSheet extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 18,
-                                fontWeight: FontWeight.bold,
                                 fontFamily: 'Stint Ultra',
                               ),
                             ),
@@ -69,7 +72,7 @@ class HomeSheet extends StatelessWidget {
                               note,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 18,
                                 fontFamily: 'Stint Ultra'
                               ),
                             ),
