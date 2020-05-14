@@ -1,4 +1,5 @@
 import 'package:app_restaurant_test/models/appBarGradient.dart';
+import 'package:app_restaurant_test/view/pages/add.page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -76,7 +77,11 @@ class _SettAll extends State<SettAll> {
                       child: SizedBox.expand(
                         child: FlatButton(
                           onPressed: () {
-                            print("olá mundo");
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => AddPage(),
+                                ));
                           },
                           child: Text(
                             "Adicionar",

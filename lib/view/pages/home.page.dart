@@ -8,8 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-
-import 'adm.login.page.dart';
+import 'package:app_restaurant_test/view/pages/adm.login.page.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.select}) : super(key: key);
