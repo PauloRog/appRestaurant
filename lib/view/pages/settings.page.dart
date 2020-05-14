@@ -66,8 +66,7 @@ class _SettAll extends State<SettAll> {
                   ],
                 ),
                 Container(),
-              ]
-          ),
+              ]),
         ),
       ),
     );

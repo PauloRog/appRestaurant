@@ -34,7 +34,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 );
               default:
                 String background = snapshot.data['background'];
-                String title = snapshot.data['title'];
                 return Stack(
                   children: <Widget>[
                     Image(
@@ -51,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
                             children: <Widget>[
                               // Stroked text as border.
                               Text(
-                                title,
+                                "Twin’s Bar &\nRestaurant",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 30,
@@ -64,7 +63,7 @@ class _SplashScreenState extends State<SplashScreen> {
                               ),
                               // Solid text as fill.
                               Text(
-                                title,
+                                "Twin’s Bar &\nRestaurant",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 30,

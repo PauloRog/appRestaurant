@@ -2,7 +2,7 @@ class Products {
   String image;
   String title;
   String description;
-  int price;
+  double price;
 
   Products({this.image, this.title, this.description, this.price});
 

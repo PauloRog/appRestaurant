@@ -1,14 +1,15 @@
 import 'package:app_restaurant_test/models/colors.rgba.dart';
 import 'package:app_restaurant_test/store/bottom.navigation.bar.store.dart';
-import 'package:app_restaurant_test/view/sheets/adm.login.page.dart';
 import 'package:app_restaurant_test/view/sheets/contact.sheet.dart';
 import 'package:app_restaurant_test/view/sheets/drink.sheet.dart';
 import 'package:app_restaurant_test/view/sheets/food.sheet.dart';
 import 'package:app_restaurant_test/view/sheets/home.sheet.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+
+import 'adm.login.page.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.select}) : super(key: key);
@@ -107,16 +108,16 @@ class _HomePageState extends State<HomePage> {
                 child: Observer(builder: (context) {
                   return (_store.icons != null)
                       ? BottomNavigationBar(
+                          showSelectedLabels: false,
+                          showUnselectedLabels: false,
                           currentIndex: _store.index,
-                          selectedItemColor: Colors.blue,
                           unselectedItemColor: Color.fromRGBO(colorText.r,
                               colorText.g, colorText.b, colorText.o),
                           items: [
                             BottomNavigationBarItem(
                               icon: SvgPicture.network(
                                 _store.icons[0].link,
-                                width: 20,
-                                height: 20,
+                                height: kBottomNavigationBarHeight - 38,
                               ),
                               title: Text(_store.icons[0].name),
                               backgroundColor: Color.fromRGBO(background.r,
@@ -125,8 +126,7 @@ class _HomePageState extends State<HomePage> {
                             BottomNavigationBarItem(
                               icon: SvgPicture.network(
                                 _store.icons[1].link,
-                                width: 20,
-                                height: 20,
+                                height: kBottomNavigationBarHeight - 38,
                               ),
                               title: Text(_store.icons[1].name),
                               backgroundColor: Color.fromRGBO(background.r,
@@ -135,8 +135,7 @@ class _HomePageState extends State<HomePage> {
                             BottomNavigationBarItem(
                               icon: SvgPicture.network(
                                 _store.icons[2].link,
-                                width: 20,
-                                height: 20,
+                                height: kBottomNavigationBarHeight - 38,
                               ),
                               title: Text(_store.icons[2].name),
                               backgroundColor: Color.fromRGBO(background.r,
@@ -145,8 +144,7 @@ class _HomePageState extends State<HomePage> {
                             BottomNavigationBarItem(
                               icon: SvgPicture.network(
                                 _store.icons[3].link,
-                                width: 20,
-                                height: 20,
+                                height: kBottomNavigationBarHeight - 38,
                               ),
                               title: Text(_store.icons[3].name),
                               backgroundColor: Color.fromRGBO(background.r,
