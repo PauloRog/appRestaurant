@@ -11,11 +11,16 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:app_restaurant_test/view/pages/adm.login.page.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key, this.select}) : super(key: key);
-
+  HomePage({Key key, this.select, this.index}) : super(key: key);
   final String select;
+  final int index;
   @override
   _HomePageState createState() => _HomePageState();
+
+  String getSelect() {
+    if (select == null) return 'restaurant';
+    return select;
+  }
 }
 
 class _HomePageState extends State<HomePage> {
@@ -31,6 +36,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.index != null) {
+      _store.setIndex(widget.index);
+    }
     _store.setIcons(widget.select);
     return StreamBuilder(
       stream: Firestore.instance

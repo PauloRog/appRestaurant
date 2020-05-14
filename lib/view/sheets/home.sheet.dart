@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class HomeSheet extends StatefulWidget {
-  final String select = HomePage().select;
   @override
   _HomeSheetState createState() => _HomeSheetState();
 }
@@ -13,7 +12,7 @@ class _HomeSheetState extends State<HomeSheet> {
   Widget build(BuildContext context) {
     return StreamBuilder(
         stream: Firestore.instance
-            .collection(widget.select)
+            .collection(HomePage().getSelect())
             .document('home')
             .snapshots(),
         builder: (context, snapshot) {
@@ -39,6 +38,10 @@ class _HomeSheetState extends State<HomeSheet> {
                   Center(
                     child: SingleChildScrollView(
                       child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          color: Colors.white,
+                        ),
                         padding: EdgeInsets.all(20.0),
                         margin: EdgeInsets.symmetric(
                             horizontal: 5.0, vertical: 50.0),
