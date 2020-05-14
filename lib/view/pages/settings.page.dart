@@ -1,3 +1,4 @@
+import 'package:app_restaurant_test/models/appBarGradient.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,12 +11,33 @@ class _SettAll extends State<SettAll> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0), // here the desired height
+        child: AppBar(
+          flexibleSpace: AppBarGradient(),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          centerTitle: true,
+          title: Text(
+            "Twin’s Bar & Restaurant",
+            style: TextStyle(
+              fontFamily: "Marguerite",
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
       body: Center(
         child: Container(
           color: Color.fromRGBO(200, 200, 200, 1),
           child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
+                SizedBox(
+                  height: 15,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -41,6 +63,9 @@ class _SettAll extends State<SettAll> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                        width: 34,
+                    ),
                     Container(
                       height: 56,
                       width: 150,
@@ -65,8 +90,20 @@ class _SettAll extends State<SettAll> {
                     ),
                   ],
                 ),
-                Container(),
-              ]),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Color.fromRGBO(255, 255, 255, 1),
+                  ),
+                  child: SizedBox(
+                    height: 150,
+                    width: 414,
+                  ),
+                ),
+              ]
+          ),
         ),
       ),
     );
