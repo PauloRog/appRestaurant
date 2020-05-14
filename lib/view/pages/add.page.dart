@@ -69,6 +69,148 @@ class _AddPage extends State<AddPage> {
                       ),
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          SizedBox(
+                            //COLOCAR IMAGEM AQUI
+                            width: 150,
+                            height: 150,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              SizedBox(
+                                width: 150,
+                                height: 295,
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        "Nome: ",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: "Capriola",
+                                          fontSize: 20.0,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 40,
+                                      ),
+                                      Text(
+                                        "Descrição: ",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: "Capriola",
+                                          fontSize: 20.0,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 40,
+                                      ),
+                                      Text(
+                                        "Preço: ",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: "Capriola",
+                                          fontSize: 20.0,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 40,
+                                      ),
+                                      Text(
+                                        "Categoria: ",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: "Capriola",
+                                          fontSize: 20.0,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 40,
+                                      ),
+                                      Text(
+                                        "Cardápio: ",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: "Capriola",
+                                          fontSize: 20.0,
+                                        ),
+                                      ),
+                                    ]),
+                              ),
+                              SizedBox(
+                                width: 150,
+                                height: 295,
+                                child: Column(
+                                    //mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      TextField(
+                                        textAlign: TextAlign.start,
+                                        cursorColor: Colors.black,
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                        ),
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: "Capriola",
+                                          fontSize: 20.0,
+                                        ),
+                                      ),
+                                      TextField(
+                                        textAlign: TextAlign.start,
+                                        cursorColor: Colors.black,
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                        ),
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: "Capriola",
+                                          fontSize: 20.0,
+                                        ),
+                                      ),
+                                      TextField(
+                                        textAlign: TextAlign.start,
+                                        cursorColor: Colors.black,
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                        ),
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: "Capriola",
+                                          fontSize: 20.0,
+                                        ),
+                                      ),
+                                      TextField(
+                                        textAlign: TextAlign.start,
+                                        cursorColor: Colors.black,
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                        ),
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: "Capriola",
+                                          fontSize: 20.0,
+                                        ),
+                                      ),
+                                    ]),
+                              ),
+                            ],
+                          )
+                        ]),
                   ),
                 ),
               );
