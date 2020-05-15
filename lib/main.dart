@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
           ),
           home: (store.connection == ConnectivityResult.none)
-              ? SplashScreen()
-              : CheckConnection());
+              ? CheckConnection()
+              : SplashScreen());
     });
   }
 }

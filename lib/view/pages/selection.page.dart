@@ -1,30 +1,29 @@
+import 'package:app_restaurant_test/model/colors.rgba.dart';
 import 'package:app_restaurant_test/view/pages/home.page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class SelectionPage extends StatelessWidget {
-  
   void goHome(BuildContext context, String select) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context)
-        => HomePage(select: select,)
-      ),
+          builder: (context) => HomePage(
+                select: select,
+              )),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: StreamBuilder<DocumentSnapshot> (
-        stream: Firestore
-        .instance
-        .collection('standard')
-        .document('selectPage')
-        .snapshots(),
+      body: StreamBuilder<DocumentSnapshot>(
+        stream: Firestore.instance
+            .collection('standard')
+            .document('selectPage')
+            .snapshots(),
         builder: (context, snapshot) {
-          switch(snapshot.connectionState) {
+          switch (snapshot.connectionState) {
             case ConnectionState.none:
             case ConnectionState.waiting:
               return Center(
@@ -34,6 +33,12 @@ class SelectionPage extends StatelessWidget {
               String background = snapshot.data['background'];
               String titleRestaurant = snapshot.data['titleRestaurant'];
               String titlePub = snapshot.data['titlePub'];
+              ColorsRgba colorText =
+                  ColorsRgba.fromJson(snapshot.data['colorText']);
+              ColorsRgba firstGradient =
+                  ColorsRgba.fromJson(snapshot.data['firstGradient']);
+              ColorsRgba secondGradient =
+                  ColorsRgba.fromJson(snapshot.data['secondGradient']);
               return Stack(
                 children: <Widget>[
                   Image(
@@ -54,8 +59,13 @@ class SelectionPage extends StatelessWidget {
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                               colors: [
-                                Color.fromRGBO(156, 44, 12, 1),
-                                Color.fromRGBO(53, 10, 0, 1),
+                                Color.fromRGBO(firstGradient.r, firstGradient.g,
+                                    firstGradient.b, firstGradient.o),
+                                Color.fromRGBO(
+                                    secondGradient.r,
+                                    secondGradient.g,
+                                    secondGradient.b,
+                                    secondGradient.o),
                               ],
                             ),
                             borderRadius: BorderRadius.all(
@@ -74,7 +84,8 @@ class SelectionPage extends StatelessWidget {
                                 titleRestaurant,
                                 style: TextStyle(
                                   fontFamily: 'Capriola',
-                                  color: Colors.white,
+                                  color: Color.fromRGBO(colorText.r,
+                                      colorText.g, colorText.b, colorText.o),
                                 ),
                               ),
                             ),
@@ -88,21 +99,28 @@ class SelectionPage extends StatelessWidget {
                           height: 60,
                           width: 185,
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [
-                                Color.fromRGBO(53, 10, 0, 1),
-                                Color.fromRGBO(156, 44, 12, 1),
-                              ],
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            ),
-                            border: Border.all(
-                              width: 3,
-                            )
-                          ),
+                              gradient: LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [
+                                  Color.fromRGBO(
+                                      secondGradient.r,
+                                      secondGradient.g,
+                                      secondGradient.b,
+                                      secondGradient.o),
+                                  Color.fromRGBO(
+                                      firstGradient.r,
+                                      firstGradient.g,
+                                      firstGradient.b,
+                                      firstGradient.o),
+                                ],
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                              border: Border.all(
+                                width: 3,
+                              )),
                           child: SizedBox.expand(
                             child: FlatButton(
                               onPressed: () {
@@ -111,8 +129,9 @@ class SelectionPage extends StatelessWidget {
                               child: Text(
                                 titlePub,
                                 style: TextStyle(
-                                  color: Colors.white,
                                   fontFamily: 'Capriola',
+                                  color: Color.fromRGBO(colorText.r,
+                                      colorText.g, colorText.b, colorText.o),
                                 ),
                               ),
                             ),
