@@ -54,7 +54,6 @@ class HomePage extends StatelessWidget {
             ColorsRgba background =
                 ColorsRgba.fromJson(snapshot.data['background']);
             MyIcons icons = MyIcons.fromJson(snapshot.data['icons']);
-            print(icons);
             return Scaffold(
               appBar: AppBar(
                 centerTitle: true,

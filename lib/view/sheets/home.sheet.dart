@@ -38,7 +38,7 @@ class HomeSheet extends StatelessWidget {
                   ),
                   Center(
                     child: Container(
-                      height: screenHeight * 0.60,
+                      height: screenHeight * 0.65,
                       width: screenWidth * 0.95,
                       decoration: BoxDecoration(
                           color: Color.fromRGBO(

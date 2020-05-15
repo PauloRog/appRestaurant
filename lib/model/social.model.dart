@@ -1,3 +1,5 @@
+import 'package:app_restaurant_test/model/colors.rgba.dart';
+
 class Social {
   Network instagram;
   Network whatsapp;
@@ -5,35 +7,34 @@ class Social {
   Network twitter;
   Network phone;
   Network maps;
+  ColorsRgba colorText;
 
-  Social({ 
+  Social({
     this.facebook,
     this.instagram,
     this.maps,
     this.phone,
     this.twitter,
-    this.whatsapp
+    this.whatsapp,
+    this.colorText,
   });
 
   Social.fromJson(Map<String, dynamic> json) {
     facebook = json['facebook'] != null
-      ? new Network.fromJson(json['facebook'])
-      : null;
+        ? new Network.fromJson(json['facebook'])
+        : null;
     instagram = json['instagram'] != null
-      ? new Network.fromJson(json['instagram'])
-      : null;
-    maps = json['maps'] != null
-      ? new Network.fromJson(json['maps'])
-      : null;
-    phone = json['phone'] != null
-      ? new Network.fromJson(json['phone'])
-      : null;
-    twitter = json['twitter'] != null
-      ? new Network.fromJson(json['twitter'])
-      : null;
-    whatsapp = json['maps'] != null
-      ? new Network.fromJson(json['whatsapp'])
-      : null;
+        ? new Network.fromJson(json['instagram'])
+        : null;
+    maps = json['maps'] != null ? new Network.fromJson(json['maps']) : null;
+    phone = json['phone'] != null ? new Network.fromJson(json['phone']) : null;
+    twitter =
+        json['twitter'] != null ? new Network.fromJson(json['twitter']) : null;
+    whatsapp =
+        json['maps'] != null ? new Network.fromJson(json['whatsapp']) : null;
+    colorText = json['colorText'] != null
+        ? new ColorsRgba.fromJson(json['colorText'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -56,9 +57,11 @@ class Social {
     if (this.whatsapp != null) {
       data['whatsapp'] = this.whatsapp.toJson();
     }
+    if (this.colorText != null) {
+      data['colorText'] = this.colorText.toJson();
+    }
     return data;
   }
-
 }
 
 class Network {
@@ -79,7 +82,7 @@ class Network {
     data['icon'] = this.icon;
     data['link'] = this.link;
     data['name'] = this.name;
+
     return data;
   }
 }
-

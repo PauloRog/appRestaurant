@@ -1,12 +1,13 @@
+import 'package:app_restaurant_test/model/colors.rgba.dart';
 import 'package:app_restaurant_test/model/social.model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SocialItem extends StatelessWidget {
-  SocialItem({Key key, this.item, this.url}) : super(key: key);
+  SocialItem({Key key, this.item, this.colorText}) : super(key: key);
 
-  Future<void> _launch(String url) async {
+   Future<void> _launch(String url) async {
     if(await canLaunch(url)) {
       final bool succeded = await launch(url, forceSafariVC: false, forceWebView: false, universalLinksOnly: true);
       if(!succeded) {
@@ -17,17 +18,18 @@ class SocialItem extends StatelessWidget {
   }
 
   final Network item;
-  final String url;
+  final ColorsRgba colorText;
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Center(
       child: Container(
-        color: Colors.blue,
         width: 250,
         alignment: Alignment.center,
         child: FlatButton(
           onPressed: () {
-            _launch(url);
+            _launch(item.link);
           },
           child: Padding(
             padding: EdgeInsets.all(8),
@@ -38,16 +40,21 @@ class SocialItem extends StatelessWidget {
               children: <Widget>[
                 SvgPicture.network(
                   item.icon,
-                  height: 32,
-                  width: 32,
+                  height: screenHeight * 0.048
                 ),
-                SizedBox(width: 5,),
+                SizedBox(
+                  width: 8,
+                ),
                 Text(
                   item.name,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 16
-                  ),
+                      fontSize: screenWidth * 0.045,
+                      color: Color.fromRGBO(
+                        colorText.r, colorText.g, colorText.b, colorText.o),
+                        fontStyle: FontStyle.italic,
+                        decoration: TextDecoration.underline,
+                      ),
                 ),
               ],
             ),
