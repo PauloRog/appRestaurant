@@ -16,11 +16,6 @@ class HomePage extends StatefulWidget {
   final int index;
   @override
   _HomePageState createState() => _HomePageState();
-
-  String getSelect() {
-    if (select == null) return 'restaurant';
-    return select;
-  }
 }
 
 class _HomePageState extends State<HomePage> {

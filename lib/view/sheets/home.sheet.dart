@@ -1,8 +1,10 @@
-import 'package:app_restaurant_test/view/pages/home.page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class HomeSheet extends StatefulWidget {
+  HomeSheet(this.select);
+
+  final String select;
   @override
   _HomeSheetState createState() => _HomeSheetState();
 }
@@ -12,7 +14,7 @@ class _HomeSheetState extends State<HomeSheet> {
   Widget build(BuildContext context) {
     return StreamBuilder(
         stream: Firestore.instance
-            .collection(HomePage().getSelect())
+            .collection(widget.select)
             .document('home')
             .snapshots(),
         builder: (context, snapshot) {

@@ -44,7 +44,7 @@ class _AddPage extends State<AddPage> {
                     ),
                     centerTitle: true,
                     title: Text(
-                      "Twin’s Bar & Restaurant",
+                      titleAppBar,
                       style: TextStyle(
                         fontFamily: "Marguerite",
                         color: Colors.white,

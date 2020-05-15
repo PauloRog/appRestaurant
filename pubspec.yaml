@@ -19,6 +19,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  url_launcher: ^3.0.3
   cupertino_icons: ^0.1.2
   dio: ^3.0.9
   flutter_markdown: ^0.3.4
@@ -76,6 +77,13 @@ flutter:
     - family: Marguerite
       fonts:
         - asset: assets/fonts/marguerite.ttf
+    - family: Rubik
+      fonts:
+        - asset: assets/fonts/rubik/Rubik-Regular.ttf
+        - asset: assets/fonts/rubik/Rubik-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/rubik/Rubik-Italic.ttf
+          style: italic
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
