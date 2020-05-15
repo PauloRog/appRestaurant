@@ -1,9 +1,30 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:toast/toast.dart';
 
-class AdminPage extends StatelessWidget {
+class AdminPage extends StatefulWidget {
+  @override
+  _AdminPageState createState() => _AdminPageState();
+}
+
+class _AdminPageState extends State<AdminPage> {
+  String password;
+  String typedPassword;
+
+  bool _checkPassword() {
+    return typedPassword == password;
+  }
+
+  void _getPassword() async {
+    DocumentSnapshot document =
+        await Firestore.instance.collection('admin').document('login').get();
+    password = document.data['password'];
+  }
+
   @override
   Widget build(BuildContext context) {
+    _getPassword();
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -36,6 +57,11 @@ class AdminPage extends StatelessWidget {
                 width: screenWidth * 0.85,
                 padding: const EdgeInsets.all(30),
                 child: TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      typedPassword = value;
+                    });
+                  },
                   obscureText: true,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
@@ -69,7 +95,26 @@ class AdminPage extends StatelessWidget {
                 ),
                 child: SizedBox.expand(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (_checkPassword()) {
+                        Toast.show(
+                          'Senha correta',
+                          context,
+                          gravity: Toast.TOP,
+                          duration: 5,
+                          backgroundColor: Color.fromRGBO(0, 255, 0, 0.8)
+                        );
+                      } else {
+                        print('Senha incorreta');
+                        Toast.show(
+                          'Senha incorreta',
+                          context,
+                          gravity: Toast.TOP,
+                          duration: 5,
+                          backgroundColor: Color.fromRGBO(255, 0, 0, 0.8)
+                        );
+                      }
+                    },
                     child: Text(
                       "Continuar",
                       style: TextStyle(
