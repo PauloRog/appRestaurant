@@ -19,7 +19,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   BottomStore _store = BottomStore();
-  
   PageController _pageController = PageController();
 
   @override

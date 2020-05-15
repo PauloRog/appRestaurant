@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HomeSheet extends StatefulWidget {
+  HomeSheet({Key key, this.select}) : super(key: key);
+  final String select;
   @override
   _HomeSheetState createState() => _HomeSheetState();
 }
@@ -22,9 +24,7 @@ class _HomeSheetState extends State<HomeSheet> {
             margin:
                 const EdgeInsets.symmetric(horizontal: 5.0, vertical: 100.0),
             child: Center(
-              child: Container(
-                
-              ),
+              child: Container(),
             ),
           ),
         ],

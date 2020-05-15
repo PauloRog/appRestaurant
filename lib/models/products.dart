@@ -1,7 +1,11 @@
 class Products {
+  String image;
   String title;
   String description;
-  int price;
+  double price;
+  bool isfood;
+  bool restaurant;
+  bool pub;
 
   Products({this.title, this.description, this.price});
 

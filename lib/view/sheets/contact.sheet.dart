@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ContactSheet extends StatefulWidget {
+  ContactSheet({Key key, this.select}) : super(key: key);
+  final String select;
   @override
   _ContactSheetState createState() => _ContactSheetState();
 }
