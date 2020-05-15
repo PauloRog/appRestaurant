@@ -25,17 +25,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   BottomStore _store = BottomStore();
-  List<Widget> _pages = [
-    HomeSheet(),
-    FoodSheet(),
-    DrinkSheet(),
-    ContactSheet(),
-    AdmLogin(),
-  ];
   PageController _pageController = PageController();
-
   @override
   Widget build(BuildContext context) {
+    List<Widget> _pages = [
+      HomeSheet(widget.select),
+      FoodSheet(widget.select),
+      DrinkSheet(widget.select),
+      ContactSheet(),
+      AdmLogin(),
+    ];
     if (widget.index != null) {
       _store.setIndex(widget.index);
     }

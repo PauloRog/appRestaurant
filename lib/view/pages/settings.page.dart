@@ -3,7 +3,6 @@ import 'package:app_restaurant_test/models/colors.rgba.dart';
 import 'package:app_restaurant_test/store/bottom.navigation.bar.store.dart';
 import 'package:app_restaurant_test/view/pages/add.page.dart';
 import 'package:app_restaurant_test/view/pages/home.page.dart';
-import 'package:app_restaurant_test/view/sheets/food.sheet.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +27,7 @@ class _SettAll extends State<SettAll> {
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => FoodSheet(
+              builder: (context) => HomePage(
                     select: 'restaurant',
                   )));
     } else if (index == 2) {
