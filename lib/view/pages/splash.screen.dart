@@ -41,8 +41,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 {
                   String background = snapshot.data['background'];
                   String title = snapshot.data['title'];
-                  ColorsRgba colorBack =
-                      ColorsRgba.fromJson(snapshot.data['colorBack']);
+                  ColorsRgba colorBackground =
+                      ColorsRgba.fromJson(snapshot.data['colorBackground']);
                   ColorsRgba colorText =
                       ColorsRgba.fromJson(snapshot.data['colorText']);
                   return Stack(
@@ -64,15 +64,15 @@ class _SplashScreenState extends State<SplashScreen> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: screenHeight * 0.045,
-                                    fontFamily: "Marguerite",
+                                    fontFamily: 'Marguerite',
                                     foreground: Paint()
                                       ..style = PaintingStyle.stroke
                                       ..strokeWidth = 6
                                       ..color = Color.fromRGBO(
-                                          colorBack.r,
-                                          colorBack.g,
-                                          colorBack.b,
-                                          colorBack.o),
+                                          colorBackground.r,
+                                          colorBackground.g,
+                                          colorBackground.b,
+                                          colorBackground.o),
                                   ),
                                 ),
                                 // Solid text as fill.
@@ -81,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: screenHeight * 0.045,
-                                    fontFamily: "Marguerite",
+                                    fontFamily: 'Marguerite',
                                     color: Color.fromRGBO(colorText.r,
                                         colorText.g, colorText.b, colorText.o),
                                   ),

@@ -26,6 +26,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
     List<Widget> _pages = [
       HomeSheet(
         select: select,
@@ -116,7 +117,6 @@ class HomePage extends StatelessWidget {
               ),
               bottomNavigationBar: Observer(
                 builder: (context) {
-                  double screenWidth = MediaQuery.of(context).size.width;
                   return (icons != null)
                       ? BottomNavigationBar(
                           currentIndex: _store.index,
@@ -134,7 +134,7 @@ class HomePage extends StatelessWidget {
                               title: Text('Home'),
                               icon: SvgPicture.network(
                                 icons.home,
-                                width: screenWidth/11,
+                                width: screenWidth / 11,
                               ),
                               backgroundColor: Color.fromRGBO(
                                 background.r,
@@ -147,7 +147,7 @@ class HomePage extends StatelessWidget {
                               title: Text('Food'),
                               icon: SvgPicture.network(
                                 icons.food,
-                                width: screenWidth/11,
+                                width: screenWidth / 11,
                               ),
                               backgroundColor: Color.fromRGBO(
                                 background.r,
@@ -160,7 +160,7 @@ class HomePage extends StatelessWidget {
                               title: Text('Drink'),
                               icon: SvgPicture.network(
                                 icons.drink,
-                                width: screenWidth/11,
+                                width: screenWidth / 11,
                               ),
                               backgroundColor: Color.fromRGBO(
                                 background.r,
@@ -173,7 +173,7 @@ class HomePage extends StatelessWidget {
                               title: Text('Contact'),
                               icon: SvgPicture.network(
                                 icons.contact,
-                                width: screenWidth/11,
+                                width: screenWidth / 11,
                               ),
                               backgroundColor: Color.fromRGBO(
                                 background.r,
