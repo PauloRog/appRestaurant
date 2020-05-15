@@ -1,116 +1,90 @@
-import 'package:app_restaurant_test/model/colors.rgba.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AdminPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: Firestore.instance.collection('admin').document('theme').snapshots(),
-      builder: (context, snapshot) {
-        switch(snapshot.connectionState) {
-          case ConnectionState.none:
-          case ConnectionState.waiting:
-            return Center(child: CircularProgressIndicator(),);
-          default:
-            String title = snapshot.data['title'];
-            ColorsRgba colorText = ColorsRgba.fromJson(snapshot.data['colorText']);
-            ColorsRgba background = ColorsRgba.fromJson(snapshot.data['background']);
-            return Scaffold(
-              appBar: AppBar(
-                centerTitle: true,
-                backgroundColor: Color.fromRGBO(
-                  background.r,
-                  background.g,
-                  background.b,
-                  background.o,
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+    return Scaffold(
+      appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            "Twin's Admin",
+            style: TextStyle(fontFamily: 'Marguerite', color: Colors.white),
+          ),
+          backgroundColor: Color.fromRGBO(133, 0, 0, 1)),
+      body: Center(
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                "Digite Sua Senha:",
+                style: TextStyle(
+                  fontFamily: "Capriola",
+                  fontSize: screenWidth * 0.06,
+                  color: Colors.black,
                 ),
-                leading: IconButton(
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: Color.fromRGBO(
-                        colorText.r,
-                        colorText.g,
-                        colorText.b,
-                        colorText.o
-                      )
-                    ),
-                    onPressed: () => Navigator.of(context).pop(),
-                ),
-                title: Text(
-                  title,
-                  style: TextStyle(
-                    color: Color.fromRGBO(
-                      colorText.r,
-                      colorText.g,
-                      colorText.b,
-                      colorText.o,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                height: screenHeight * 0.18,
+                width: screenWidth * 0.85,
+                padding: const EdgeInsets.all(30),
+                child: TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                    hintText: "Senha",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16),
                     ),
                   ),
                 ),
               ),
-              backgroundColor: Colors.white,
-              body: ListView(
-                children: <Widget>[
-                  ListTile(
-                    title: Text('Comida'),
-                  ),
-                  ListTile(
-                    title: Text('Comida'),
-                  ),
-                  ListTile(
-                    title: Text('Comida'),
-                  ),
-                  ListTile(
-                    title: Text('Babida'),
-                  ),
-                  ListTile(
-                    title: Text('bebida'),
-                  ),
-                  ListTile(
-                    title: Text('Bebida'),
-                  ),
-                  ListTile(
-                    title: Text('Comida'),
-                  ),
-                  ListTile(
-                    title: Text('Comida'),
-                  ),
-                  ListTile(
-                    title: Text('Comida'),
-                  ),
-                  ListTile(
-                    title: Text('Babida'),
-                  ),
-                  ListTile(
-                    title: Text('bebida'),
-                  ),
-                  ListTile(
-                    title: Text('Bebida'),
-                  ),
-                  ListTile(
-                    title: Text('Comida'),
-                  ),
-                  ListTile(
-                    title: Text('Comida'),
-                  ),
-                  ListTile(
-                    title: Text('Comida'),
-                  ),
-                  ListTile(
-                    title: Text('Babida'),
-                  ),
-                  ListTile(
-                    title: Text('bebida'),
-                  ),
-                  ListTile(
-                    title: Text('Bebida'),
-                  ),
-                ],
+              SizedBox(
+                height: 10,
               ),
-            );
-        }
-      }
+              Container(
+                alignment: Alignment.center,
+                height: 50,
+                width: 214,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: <Color>[
+                      Color.fromRGBO(113, 00, 00, 1),
+                      Color.fromRGBO(187, 98, 98, 1),
+                    ],
+                    tileMode: TileMode.clamp,
+                  ),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+                child: SizedBox.expand(
+                  child: FlatButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Continuar",
+                      style: TextStyle(
+                        fontFamily: "Capriola",
+                        fontSize: 24,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
