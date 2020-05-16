@@ -36,10 +36,11 @@ class ContactSheet extends StatelessWidget {
                     image: NetworkImage(background),
                     fit: BoxFit.cover,
                     height: double.infinity,
+                    width: double.infinity,
                   ),
                   Center(
                     child: Container(
-                      height: screenHeight * 0.65,
+                      //height: screenHeight * 0.65,
                       width: screenWidth * 0.95,
                       decoration: BoxDecoration(
                           color: Color.fromRGBO(

@@ -10,7 +10,7 @@ class DropDown extends StatelessWidget {
     return Observer(
       builder: (context) {
         return DropdownButton<String>(
-          dropdownColor: Color.fromRGBO(145, 145, 145, 1),
+          //dropdownColor: Color.fromRGBO(145, 145, 145, 1),
           items: option.map(
             (String e) {
               return DropdownMenuItem<String>(
