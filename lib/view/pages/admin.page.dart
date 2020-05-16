@@ -1,3 +1,4 @@
+import 'package:app_restaurant_test/view/pages/settings.page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,12 +30,24 @@ class _AdminPageState extends State<AdminPage> {
     final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            "Twin's Admin",
-            style: TextStyle(fontFamily: 'Marguerite', color: Colors.white),
+        centerTitle: true,
+        title: Text(
+          "Twin's Admin",
+          style: TextStyle(fontFamily: 'Marguerite', color: Colors.white),
+        ),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color.fromRGBO(113, 0, 0, 1),
+                Color.fromRGBO(187, 98, 98, 1)
+              ],
+            ),
           ),
-          backgroundColor: Color.fromRGBO(133, 0, 0, 1)),
+        ),
+      ),
       body: Center(
         child: Container(
           color: Colors.white,
@@ -83,11 +96,10 @@ class _AdminPageState extends State<AdminPage> {
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: <Color>[
-                      Color.fromRGBO(113, 00, 00, 1),
-                      Color.fromRGBO(187, 98, 98, 1),
+                    colors: [
+                      Color.fromRGBO(113, 0, 0, 1),
+                      Color.fromRGBO(187, 98, 98, 1)
                     ],
-                    tileMode: TileMode.clamp,
                   ),
                   borderRadius: BorderRadius.all(
                     Radius.circular(10),
@@ -97,22 +109,22 @@ class _AdminPageState extends State<AdminPage> {
                   child: FlatButton(
                     onPressed: () {
                       if (_checkPassword()) {
-                        Toast.show(
-                          'Senha correta',
+                        Toast.show('Senha correta', context,
+                            gravity: Toast.TOP,
+                            duration: 1,
+                            backgroundColor: Color.fromRGBO(0, 255, 0, 0.8));
+                        Navigator.push(
                           context,
-                          gravity: Toast.TOP,
-                          duration: 5,
-                          backgroundColor: Color.fromRGBO(0, 255, 0, 0.8)
+                          MaterialPageRoute(
+                            builder: (context) => SettingsPage(),
+                          ),
                         );
                       } else {
                         print('Senha incorreta');
-                        Toast.show(
-                          'Senha incorreta',
-                          context,
-                          gravity: Toast.TOP,
-                          duration: 5,
-                          backgroundColor: Color.fromRGBO(255, 0, 0, 0.8)
-                        );
+                        Toast.show('Senha incorreta', context,
+                            gravity: Toast.TOP,
+                            duration: 5,
+                            backgroundColor: Color.fromRGBO(255, 0, 0, 0.8));
                       }
                     },
                     child: Text(
