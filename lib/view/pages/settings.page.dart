@@ -1,11 +1,18 @@
 import 'package:app_restaurant_test/model/colors.rgba.dart';
-import 'package:app_restaurant_test/view/widgets/drop.down.button.dart';
+import 'package:app_restaurant_test/store/drop.down.store.dart';
+import 'package:app_restaurant_test/view/widgets/my.list.view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SettingsPage extends StatelessWidget {
+  final List<String> option = ['Opções', 'Principais', 'Porções', 'Bebidas'];
+  final DropDownStore store = DropDownStore();
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return StreamBuilder(
       stream:
           Firestore.instance.collection('admin').document('theme').snapshots(),
@@ -25,6 +32,7 @@ class SettingsPage extends StatelessWidget {
             ColorsRgba colorText = ColorsRgba.fromJson(
               snapshot.data['colorText'],
             );
+            Map icons = snapshot.data['icons'];
             return Scaffold(
               appBar: AppBar(
                 centerTitle: true,
@@ -66,32 +74,78 @@ class SettingsPage extends StatelessWidget {
               body: Column(
                 children: [
                   Container(
-                    height: 100,
-                    color: Colors.blue,
+                    height: screenHeight * 0.16,
                     child: Center(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            height: 56,
-                            width: 150,
+                            height: screenHeight * 0.07,
+                            width: screenWidth * 0.4,
                             decoration: BoxDecoration(
                               color: Color.fromRGBO(145, 145, 145, 1),
                               borderRadius: BorderRadius.all(
                                 Radius.circular(18),
                               ),
                             ),
-                            child: Center(child: DropDown()),
+                            child: Center(child: Observer(
+                              builder: (context) {
+                                return DropdownButton<String>(
+                                  dropdownColor:
+                                      Color.fromRGBO(145, 145, 145, 1),
+                                  items: option.map(
+                                    (String e) {
+                                      return DropdownMenuItem<String>(
+                                        value: e,
+                                        child: Text(
+                                          e,
+                                          style: TextStyle(),
+                                        ),
+                                      );
+                                    },
+                                  ).toList(),
+                                  onChanged: (String item) {
+                                    store.selectOption(item);
+                                  },
+                                  value: store.select,
+                                );
+                              },
+                            )),
                           ),
                           SizedBox(
                             width: 25,
                           ),
                           Container(
-                              height: 56, width: 150, color: Colors.black),
+                            height: screenHeight * 0.07,
+                            width: screenWidth * 0.4,
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(37, 166, 83, 1),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(18),
+                              ),
+                            ),
+                            child: Row(
+                              children: [
+                                SvgPicture.network(
+                                  icons['add'],
+                                  width: screenWidth * 0.15,
+                                ),
+                                Text('ADICIONAR'),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
                   ),
+                  Observer(builder: (context) {
+                    return Expanded(
+                      child: MyListView(
+                        icons: icons,
+                        filter: store.select,
+                      ),
+                    );
+                  }),
                 ],
               ),
             );

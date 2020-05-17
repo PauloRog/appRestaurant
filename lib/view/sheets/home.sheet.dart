@@ -35,6 +35,7 @@ class HomeSheet extends StatelessWidget {
                     image: NetworkImage(background),
                     fit: BoxFit.cover,
                     height: double.infinity,
+                    width: double.infinity,
                   ),
                   Center(
                     child: Container(

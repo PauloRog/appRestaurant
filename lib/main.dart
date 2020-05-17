@@ -8,8 +8,10 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
+    
     ConnectionStore store = ConnectionStore();
     store.getConnection();
     return Observer(builder: (context) {

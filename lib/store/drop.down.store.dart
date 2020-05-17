@@ -5,10 +5,11 @@ class DropDownStore = _DropDownStoreBase with _$DropDownStore;
 
 abstract class _DropDownStoreBase with Store {
   @observable
-  String select = 'OPCOES';
+  String select = 'Opções';
 
   @action
   void selectOption(String item) {
     select = item;
+    print(select);
   }
 }

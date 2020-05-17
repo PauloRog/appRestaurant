@@ -45,6 +45,7 @@ class SelectionPage extends StatelessWidget {
                     image: NetworkImage(background),
                     fit: BoxFit.cover,
                     height: double.infinity,
+                    width: double.infinity,
                   ),
                   Center(
                     child: Column(
@@ -99,28 +100,26 @@ class SelectionPage extends StatelessWidget {
                           height: 60,
                           width: 185,
                           decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [
-                                  Color.fromRGBO(
-                                      secondGradient.r,
-                                      secondGradient.g,
-                                      secondGradient.b,
-                                      secondGradient.o),
-                                  Color.fromRGBO(
-                                      firstGradient.r,
-                                      firstGradient.g,
-                                      firstGradient.b,
-                                      firstGradient.o),
-                                ],
-                              ),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              ),
-                              border: Border.all(
-                                width: 3,
-                              )),
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                Color.fromRGBO(
+                                    secondGradient.r,
+                                    secondGradient.g,
+                                    secondGradient.b,
+                                    secondGradient.o),
+                                Color.fromRGBO(firstGradient.r, firstGradient.g,
+                                    firstGradient.b, firstGradient.o),
+                              ],
+                            ),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                            border: Border.all(
+                              width: 3,
+                            ),
+                          ),
                           child: SizedBox.expand(
                             child: FlatButton(
                               onPressed: () {

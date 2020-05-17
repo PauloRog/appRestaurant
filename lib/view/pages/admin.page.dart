@@ -66,8 +66,8 @@ class _AdminPageState extends State<AdminPage> {
                 height: 10,
               ),
               Container(
-                height: screenHeight * 0.18,
-                width: screenWidth * 0.85,
+                /* height: screenHeight * 0.18,
+                width: screenWidth * 0.85, */
                 padding: const EdgeInsets.all(30),
                 child: TextField(
                   onChanged: (value) {
