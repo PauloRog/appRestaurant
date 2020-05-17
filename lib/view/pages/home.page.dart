@@ -1,4 +1,5 @@
 import 'package:app_restaurant_test/store/bottom.navigation.bar.store.dart';
+import 'package:app_restaurant_test/view/pages/admin.page.dart';
 import 'package:app_restaurant_test/view/sheets/contact.sheet.dart';
 import 'package:app_restaurant_test/view/sheets/drink.sheet.dart';
 import 'package:app_restaurant_test/view/sheets/food.sheet.dart';
@@ -19,6 +20,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  void goAdmin(BuildContext context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => AdminPage()),
+    );
+  }
+
   BottomStore _store = BottomStore();
   PageController _controller = PageController();
   @override
