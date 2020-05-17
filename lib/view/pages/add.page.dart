@@ -1,6 +1,7 @@
 import 'package:app_restaurant_test/models/colors.rgba.dart';
 import 'package:app_restaurant_test/store/bottom.navigation.bar.store.dart';
 import 'package:flutter/material.dart';
+import 'package:app_restaurant_test/models/appBarGradient.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AddPage extends StatefulWidget {
@@ -36,6 +37,7 @@ class _AddPage extends State<AddPage> {
                   preferredSize:
                       Size.fromHeight(50.0), // here the desired height
                   child: AppBar(
+                    flexibleSpace: AppBarGradient(),
                     leading: IconButton(
                       icon: Icon(Icons.arrow_back, color: Colors.white),
                       onPressed: () => Navigator.of(context).pop(),

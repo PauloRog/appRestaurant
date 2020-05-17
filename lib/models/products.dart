@@ -1,25 +1,23 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Products {
+  String id;
   String image;
   String title;
   String description;
   double price;
-  bool isfood;
-  bool restaurant;
-  bool pub;
+  bool isFood;
+  bool isRestaurant;
+  bool isPub;
 
-  Products({this.title, this.description, this.price});
-
-  Products.fromJson(Map<String, dynamic> json) {
-    title = json['title'];
-    description = json['description'];
-    price = json['price'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
-    data['description'] = this.description;
-    data['price'] = this.price;
-    return data;
+  Products.fromDocument(DocumentSnapshot snapshot) {
+    id = snapshot.documentID;
+    image = snapshot.data['image'];
+    title = snapshot.data['title'];
+    description = snapshot.data['description'];
+    price = snapshot.data['price'] + 0.0;
+    isFood = snapshot.data['isFood'];
+    isRestaurant = snapshot.data['isRestaurant'];
+    isPub = snapshot.data['isPub'];
   }
 }

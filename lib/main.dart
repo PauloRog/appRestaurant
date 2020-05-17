@@ -11,6 +11,12 @@ class MyApp extends StatelessWidget {
       title: 'App Restaurant Test',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        dividerTheme: DividerThemeData(
+          space: 10,
+          thickness: 2,
+          indent: 20,
+          endIndent: 20,
+        ),
       ),
       home: SplashScreen(),
     );
