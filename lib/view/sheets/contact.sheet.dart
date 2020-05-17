@@ -51,8 +51,7 @@ class ContactSheet extends StatelessWidget {
                           borderRadius: BorderRadius.circular(18)),
                       child: Padding(
                         padding: const EdgeInsets.all(8),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                        child: ListView(
                           children: <Widget>[
                             SocialItem(
                               item: social.facebook,
