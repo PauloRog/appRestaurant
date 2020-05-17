@@ -1,3 +1,5 @@
+import 'package:app_restaurant_test/models/colors.rgba.dart';
+import 'package:app_restaurant_test/models/icon.model.dart';
 import 'package:app_restaurant_test/store/bottom.navigation.bar.store.dart';
 import 'package:app_restaurant_test/view/pages/admin.page.dart';
 import 'package:app_restaurant_test/view/sheets/contact.sheet.dart';
@@ -5,21 +7,16 @@ import 'package:app_restaurant_test/view/sheets/drink.sheet.dart';
 import 'package:app_restaurant_test/view/sheets/food.sheet.dart';
 import 'package:app_restaurant_test/view/sheets/home.sheet.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import '../../models/colors.rgba.dart';
-import '../../models/icon.model.dart';
+import 'package:flutter_svg/svg.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key key, this.select, this.index}) : super(key: key);
+class HomePage extends StatelessWidget {
+  HomePage({Key key, this.select}) : super(key: key);
   final String select;
-  final int index;
-  @override
-  _HomePageState createState() => _HomePageState();
-}
+  final BottomStore _store = BottomStore();
+  final PageController _controller = PageController();
 
-class _HomePageState extends State<HomePage> {
   void goAdmin(BuildContext context) {
     Navigator.pushReplacement(
       context,
@@ -27,22 +24,22 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  BottomStore _store = BottomStore();
-  PageController _controller = PageController();
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
     List<Widget> _pages = [
-      HomeSheet(select: widget.select),
-      FoodSheet(select: widget.select),
-      DrinkSheet(select: widget.select),
-      ContactSheet(select: widget.select)
+      HomeSheet(
+        select: select,
+      ),
+      FoodSheet(),
+      DrinkSheet(),
+      ContactSheet(
+        select: select,
+      ),
     ];
-    _store.setIcons(widget.select);
     return StreamBuilder(
-      stream: Firestore.instance
-          .collection(widget.select)
-          .document('theme')
-          .snapshots(),
+      stream:
+          Firestore.instance.collection(select).document('theme').snapshots(),
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.none:
@@ -192,16 +189,6 @@ class _HomePageState extends State<HomePage> {
             );
         }
       },
-    );
-  }
-
-  void goAdmin(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => HomePage(
-                select: widget.select,
-              )),
     );
   }
 }
