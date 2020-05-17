@@ -1,4 +1,3 @@
-import 'package:app_restaurant_test/models/icon.model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mobx/mobx.dart';
 part 'bottom.navigation.bar.store.g.dart';

@@ -1,5 +1,4 @@
 import 'package:app_restaurant_test/models/appBarGradient.dart';
-import 'package:app_restaurant_test/view/pages/settings.page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

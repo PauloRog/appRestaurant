@@ -19,7 +19,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  url_launcher: ^3.0.3
   cupertino_icons: ^0.1.2
   dio: ^3.0.9
   flutter_markdown: ^0.3.4

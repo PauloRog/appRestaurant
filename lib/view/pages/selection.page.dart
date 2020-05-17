@@ -1,7 +1,7 @@
-import 'package:app_restaurant_test/model/colors.rgba.dart';
 import 'package:app_restaurant_test/view/pages/home.page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import '../../models/colors.rgba.dart';
 
 class SelectionPage extends StatelessWidget {
   void goHome(BuildContext context, String select) {
@@ -135,15 +135,14 @@ class SelectionPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ],
                       ),
-                    ),
-                  ),
                 ],
-              );
-          }
-        },
-      ),
-    );
-  }
+              ),
+            ),
+          ]
+       );
+      }
+     }
+   ),
+ );
 }

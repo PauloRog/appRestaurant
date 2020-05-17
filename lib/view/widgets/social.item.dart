@@ -1,20 +1,20 @@
-import 'package:app_restaurant_test/model/colors.rgba.dart';
-import 'package:app_restaurant_test/model/social.model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../models/colors.rgba.dart';
+import '../../models/social.model.dart';
 
 class SocialItem extends StatelessWidget {
   SocialItem({Key key, this.item, this.colorText}) : super(key: key);
 
-   Future<void> _launch(String url) async {
-    if(await canLaunch(url)) {
-      final bool succeded = await launch(url, forceSafariVC: false, forceWebView: false, universalLinksOnly: true);
-      if(!succeded) {
+  Future<void> _launch(String url) async {
+    if (await canLaunch(url)) {
+      final bool succeded = await launch(url,
+          forceSafariVC: false, forceWebView: false, universalLinksOnly: true);
+      if (!succeded) {
         await launch(url, forceSafariVC: true);
       }
     }
-    
   }
 
   final Network item;
@@ -38,10 +38,7 @@ class SocialItem extends StatelessWidget {
               crossAxisAlignment: WrapCrossAlignment.center,
               direction: Axis.horizontal,
               children: <Widget>[
-                SvgPicture.network(
-                  item.icon,
-                  height: screenHeight * 0.048
-                ),
+                SvgPicture.network(item.icon, height: screenHeight * 0.048),
                 SizedBox(
                   width: 8,
                 ),
@@ -49,12 +46,12 @@ class SocialItem extends StatelessWidget {
                   item.name,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: screenWidth * 0.045,
-                      color: Color.fromRGBO(
+                    fontSize: screenWidth * 0.045,
+                    color: Color.fromRGBO(
                         colorText.r, colorText.g, colorText.b, colorText.o),
-                        fontStyle: FontStyle.italic,
-                        decoration: TextDecoration.underline,
-                      ),
+                    fontStyle: FontStyle.italic,
+                    decoration: TextDecoration.underline,
+                  ),
                 ),
               ],
             ),

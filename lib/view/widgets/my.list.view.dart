@@ -1,7 +1,8 @@
-import 'package:app_restaurant_test/model/product.model.dart';
 import 'package:app_restaurant_test/view/widgets/product.tile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+import '../../models/product.model.dart';
 
 class MyListView extends StatelessWidget {
   MyListView({Key key, this.icons, this.filter}) : super(key: key);
@@ -24,23 +25,27 @@ class MyListView extends StatelessWidget {
             List<Product> products = List<Product>();
             documents.forEach(
               (element) {
-                if(filter == 'Bebidas') {
-                  Product p = Product.fromJson(element.data, element.documentID);
-                  if(p.category=='drink') {
+                if (filter == 'Bebidas') {
+                  Product p =
+                      Product.fromJson(element.data, element.documentID);
+                  if (p.category == 'drink') {
                     products.add(p);
                   }
-                } else if(filter == 'Principais') {
-                  Product p = Product.fromJson(element.data, element.documentID);
-                  if(p.category=='food' && p.section=='restaurant') {
+                } else if (filter == 'Principais') {
+                  Product p =
+                      Product.fromJson(element.data, element.documentID);
+                  if (p.category == 'food' && p.section == 'restaurant') {
                     products.add(p);
                   }
-                } else if(filter == 'Porções') {
-                  Product p = Product.fromJson(element.data, element.documentID);
-                  if(p.category=='food' && p.section=='pub') {
+                } else if (filter == 'Porções') {
+                  Product p =
+                      Product.fromJson(element.data, element.documentID);
+                  if (p.category == 'food' && p.section == 'pub') {
                     products.add(p);
                   }
                 } else {
-                  Product p =Product.fromJson(element.data, element.documentID);
+                  Product p =
+                      Product.fromJson(element.data, element.documentID);
                   products.add(p);
                 }
               },

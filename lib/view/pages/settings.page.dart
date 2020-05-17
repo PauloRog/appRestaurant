@@ -1,10 +1,10 @@
-import 'package:app_restaurant_test/model/colors.rgba.dart';
 import 'package:app_restaurant_test/store/drop.down.store.dart';
 import 'package:app_restaurant_test/view/widgets/my.list.view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../models/colors.rgba.dart';
 
 class SettingsPage extends StatelessWidget {
   final List<String> option = ['Opções', 'Principais', 'Porções', 'Bebidas'];

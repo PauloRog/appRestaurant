@@ -1,8 +1,8 @@
 import 'package:app_restaurant_test/controller/products.controller.dart';
-import 'package:app_restaurant_test/model/product.model.dart';
 import 'package:app_restaurant_test/view/pages/product.page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../models/product.model.dart';
 
 class ProductTile extends StatelessWidget {
   ProductTile({Key key, this.product, this.icons}) : super(key: key);

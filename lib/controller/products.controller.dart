@@ -1,5 +1,5 @@
-import 'package:app_restaurant_test/model/product.model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../models/product.model.dart';
 
 class ProductsController {
   Future<void> delete(String id) async {

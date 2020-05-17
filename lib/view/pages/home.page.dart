@@ -1,7 +1,4 @@
-import 'package:app_restaurant_test/model/colors.rgba.dart';
-import 'package:app_restaurant_test/model/icon.model.dart';
 import 'package:app_restaurant_test/store/bottom.navigation.bar.store.dart';
-import 'package:app_restaurant_test/view/pages/admin.page.dart';
 import 'package:app_restaurant_test/view/sheets/contact.sheet.dart';
 import 'package:app_restaurant_test/view/sheets/drink.sheet.dart';
 import 'package:app_restaurant_test/view/sheets/food.sheet.dart';
@@ -10,7 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:app_restaurant_test/view/pages/adm.login.page.dart';
+import '../../models/colors.rgba.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.select, this.index}) : super(key: key);

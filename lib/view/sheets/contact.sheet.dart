@@ -1,10 +1,8 @@
-import 'package:app_restaurant_test/model/colors.rgba.dart';
-import 'package:app_restaurant_test/model/social.model.dart';
 import 'package:app_restaurant_test/view/widgets/social.item.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
+import '../../models/colors.rgba.dart';
+import '../../models/social.model.dart';
 
 class ContactSheet extends StatefulWidget {
   ContactSheet({Key key, this.select}) : super(key: key);
@@ -13,13 +11,14 @@ class ContactSheet extends StatefulWidget {
   _ContactSheetState createState() => _ContactSheetState();
 }
 
+class _ContactSheetState extends State<ContactSheet> {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
     return StreamBuilder(
         stream: Firestore.instance
-            .collection(select)
+            .collection(widget.select)
             .document('contact')
             .snapshots(),
         builder: (contex, snapshot) {
@@ -44,7 +43,7 @@ class ContactSheet extends StatefulWidget {
                   ),
                   Center(
                     child: Container(
-                      //height: screenHeight * 0.65,
+                      height: screenHeight * 0.65,
                       width: screenWidth * 0.95,
                       decoration: BoxDecoration(
                           color: Color.fromRGBO(

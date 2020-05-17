@@ -1,5 +1,5 @@
-import 'package:app_restaurant_test/model/product.model.dart';
 import 'package:flutter/material.dart';
+import '../../models/product.model.dart';
 
 class ProductPage extends StatefulWidget {
   ProductPage({Key key, this.product}) : super(key: key);

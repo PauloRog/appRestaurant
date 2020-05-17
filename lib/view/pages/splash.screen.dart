@@ -1,7 +1,7 @@
-import 'package:app_restaurant_test/model/colors.rgba.dart';
 import 'package:app_restaurant_test/view/pages/selection.page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import '../../models/colors.rgba.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../../models/colors.rgba.dart';
+
 class HomeSheet extends StatefulWidget {
   HomeSheet({Key key, this.select}) : super(key: key);
   final String select;
@@ -8,14 +10,16 @@ class HomeSheet extends StatefulWidget {
   _HomeSheetState createState() => _HomeSheetState();
 }
 
-  final String select;
+class _HomeSheetState extends State<HomeSheet> {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
     return StreamBuilder(
-        stream:
-            Firestore.instance.collection(select).document('home').snapshots(),
+        stream: Firestore.instance
+            .collection(widget.select)
+            .document('home')
+            .snapshots(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:

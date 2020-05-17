@@ -1,4 +1,4 @@
-import 'package:app_restaurant_test/model/colors.rgba.dart';
+import 'colors.rgba.dart';
 
 class Social {
   Network instagram;
