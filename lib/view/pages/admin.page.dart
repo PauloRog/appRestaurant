@@ -32,7 +32,7 @@ class _AdminPageState extends State<AdminPage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "Twin's Admin",
+          "Twin's  Admin",
           style: TextStyle(fontFamily: 'Marguerite', color: Colors.white),
         ),
         flexibleSpace: Container(
