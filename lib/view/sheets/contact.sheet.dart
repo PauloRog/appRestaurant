@@ -1,3 +1,6 @@
+import 'package:app_restaurant_test/model/colors.rgba.dart';
+import 'package:app_restaurant_test/model/social.model.dart';
+import 'package:app_restaurant_test/view/widgets/social.item.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,15 +13,16 @@ class ContactSheet extends StatefulWidget {
   _ContactSheetState createState() => _ContactSheetState();
 }
 
-class _ContactSheetState extends State<ContactSheet> {
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return StreamBuilder(
         stream: Firestore.instance
-            .collection('restaurant')
+            .collection(select)
             .document('contact')
             .snapshots(),
-        builder: (context, snapshot) {
+        builder: (contex, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
             case ConnectionState.waiting:
@@ -27,19 +31,9 @@ class _ContactSheetState extends State<ContactSheet> {
               );
             default:
               String background = snapshot.data['background'];
-              String title = snapshot.data['title'];
-              Map social = snapshot.data['social'];
-              Map facebook = social['facebook'];
-              Map instagram = social['instagram'];
-              Map twitter = social['twitter'];
-              Map maps = social['maps'];
-              Map phone = social['phone'];
-              Map whatsapp = social['whatsapp'];
-              Map name = maps['name'];
-              String rua = name['rua'];
-              String bairro = name['bairro'];
-              String cidade = name['cidade'];
-
+              Social social = Social.fromJson(snapshot.data['social']);
+              ColorsRgba colorBackground =
+                  ColorsRgba.fromJson(snapshot.data['colorBackground']);
               return Stack(
                 children: <Widget>[
                   Image(
@@ -49,239 +43,58 @@ class _ContactSheetState extends State<ContactSheet> {
                     width: double.infinity,
                   ),
                   Center(
-                    child: SingleChildScrollView(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.white,
-                        ),
-                        padding: EdgeInsets.all(20.0),
-                        margin: EdgeInsets.symmetric(
-                            horizontal: 5.0, vertical: 50.0),
-                        child: Column(
+                    child: Container(
+                      //height: screenHeight * 0.65,
+                      width: screenWidth * 0.95,
+                      decoration: BoxDecoration(
+                          color: Color.fromRGBO(
+                              colorBackground.r,
+                              colorBackground.g,
+                              colorBackground.b,
+                              colorBackground.o),
+                          borderRadius: BorderRadius.circular(18)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: ListView(
                           children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.all(5.0),
-                              alignment: Alignment.center,
-                              child: Text(
-                                title,
-                                style: TextStyle(
-                                  fontFamily: "Rubik",
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18.0,
-                                  color: Color.fromRGBO(0, 0, 0, 1),
-                                ),
-                              ),
+                            SocialItem(
+                              item: social.facebook,
+                              colorText: social.colorText,
                             ),
-                            Row(
-                              children: <Widget>[
-                                Flexible(
-                                  flex: 1,
-                                  child: Container(
-                                    margin: EdgeInsets.all(10.0),
-                                    alignment: Alignment.center,
-                                    child: SvgPicture.network(
-                                      instagram['icon'],
-                                      fit: BoxFit.cover,
-                                      height: 50,
-                                    ),
-                                  ),
-                                ),
-                                Flexible(
-                                  flex: 2,
-                                  child: InkWell(
-                                    child: Text(
-                                      instagram['name'],
-                                      style: TextStyle(
-                                        fontFamily: "Rubik",
-                                        fontStyle: FontStyle.italic,
-                                        fontSize: 16.0,
-                                        color: Color.fromRGBO(0, 0, 0, 1),
-                                      ),
-                                    ),
-                                    onTap: () async {
-                                      if (await canLaunch("link")) {
-                                        await launch("link");
-                                      }
-                                    },
-                                  ),
-                                ),
-                              ],
+                            SizedBox(
+                              height: 10,
                             ),
-                            Row(
-                              children: <Widget>[
-                                Flexible(
-                                  flex: 1,
-                                  child: Container(
-                                    margin: EdgeInsets.all(10.0),
-                                    alignment: Alignment.center,
-                                    child: SvgPicture.network(
-                                      facebook['icon'],
-                                      fit: BoxFit.cover,
-                                      height: 50,
-                                    ),
-                                  ),
-                                ),
-                                Flexible(
-                                  flex: 2,
-                                  child: InkWell(
-                                    child: Text(
-                                      facebook['name'],
-                                      style: TextStyle(
-                                        fontFamily: "Rubik",
-                                        fontStyle: FontStyle.italic,
-                                        fontSize: 16.0,
-                                        color: Color.fromRGBO(0, 0, 0, 1),
-                                      ),
-                                    ),
-                                    onTap: () async {
-                                      if (await canLaunch("link")) {
-                                        await launch("link");
-                                      }
-                                    },
-                                  ),
-                                ),
-                              ],
+                            SocialItem(
+                              item: social.instagram,
+                              colorText: social.colorText,
                             ),
-                            Row(
-                              children: <Widget>[
-                                Flexible(
-                                  flex: 1,
-                                  child: Container(
-                                    margin: EdgeInsets.all(10.0),
-                                    alignment: Alignment.center,
-                                    child: SvgPicture.network(
-                                      twitter['icon'],
-                                      fit: BoxFit.cover,
-                                      height: 50,
-                                    ),
-                                  ),
-                                ),
-                                Flexible(
-                                  flex: 2,
-                                  child: InkWell(
-                                    child: Text(
-                                      twitter['name'],
-                                      style: TextStyle(
-                                        fontFamily: "Rubik",
-                                        fontStyle: FontStyle.italic,
-                                        fontSize: 16.0,
-                                        color: Color.fromRGBO(0, 0, 0, 1),
-                                      ),
-                                    ),
-                                    onTap: () async {
-                                      if (await canLaunch("link")) {
-                                        await launch("link");
-                                      }
-                                    },
-                                  ),
-                                ),
-                              ],
+                            SizedBox(
+                              height: 10,
                             ),
-                            Row(
-                              children: <Widget>[
-                                Flexible(
-                                  flex: 1,
-                                  child: Container(
-                                    margin: EdgeInsets.all(10.0),
-                                    alignment: Alignment.center,
-                                    child: SvgPicture.network(
-                                      whatsapp['icon'],
-                                      fit: BoxFit.cover,
-                                      height: 50,
-                                    ),
-                                  ),
-                                ),
-                                Flexible(
-                                  flex: 2,
-                                  child: InkWell(
-                                    child: Text(
-                                      whatsapp['name'],
-                                      style: TextStyle(
-                                        fontFamily: "Rubik",
-                                        fontStyle: FontStyle.italic,
-                                        fontSize: 16.0,
-                                        color: Color.fromRGBO(0, 0, 0, 1),
-                                      ),
-                                    ),
-                                    onTap: () async {
-                                      if (await canLaunch("link")) {
-                                        await launch("link");
-                                      }
-                                    },
-                                  ),
-                                ),
-                              ],
+                            SocialItem(
+                              item: social.whatsapp,
+                              colorText: social.colorText,
                             ),
-                            Row(
-                              children: <Widget>[
-                                Flexible(
-                                  flex: 1,
-                                  child: Container(
-                                    margin: EdgeInsets.all(10.0),
-                                    alignment: Alignment.center,
-                                    child: SvgPicture.network(
-                                      phone['icon'],
-                                      fit: BoxFit.cover,
-                                      height: 50,
-                                    ),
-                                  ),
-                                ),
-                                Flexible(
-                                  flex: 2,
-                                  child: InkWell(
-                                    child: Text(
-                                      phone['name'],
-                                      style: TextStyle(
-                                        fontFamily: "Rubik",
-                                        fontStyle: FontStyle.italic,
-                                        fontSize: 16.0,
-                                        color: Color.fromRGBO(0, 0, 0, 1),
-                                      ),
-                                    ),
-                                    onTap: () async {
-                                      if (await canLaunch("link")) {
-                                        await launch("link");
-                                      }
-                                    },
-                                  ),
-                                ),
-                              ],
+                            SizedBox(
+                              height: 10,
                             ),
-                            Row(
-                              children: <Widget>[
-                                Flexible(
-                                  flex: 1,
-                                  child: Container(
-                                    margin: EdgeInsets.all(10.0),
-                                    alignment: Alignment.center,
-                                    child: SvgPicture.network(
-                                      maps['icon'],
-                                      fit: BoxFit.cover,
-                                      height: 50,
-                                    ),
-                                  ),
-                                ),
-                                Flexible(
-                                  flex: 2,
-                                  child: InkWell(
-                                    child: Text(
-                                      "$rua\n$bairro\n$cidade",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontFamily: "Rubik",
-                                        fontSize: 16.0,
-                                        color: Color.fromRGBO(0, 0, 0, 1),
-                                      ),
-                                    ),
-                                    onTap: () async {
-                                      if (await canLaunch("link")) {
-                                        await launch("link");
-                                      }
-                                    },
-                                  ),
-                                ),
-                              ],
+                            SocialItem(
+                              item: social.twitter,
+                              colorText: social.colorText,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            SocialItem(
+                              item: social.phone,
+                              colorText: social.colorText,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            SocialItem(
+                              item: social.maps,
+                              colorText: social.colorText,
                             ),
                           ],
                         ),

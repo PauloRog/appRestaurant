@@ -26,35 +26,8 @@ mixin _$BottomStore on _BottomStoreBase, Store {
     }, _$indexAtom, name: '${_$indexAtom.name}_set');
   }
 
-  final _$iconsAtom = Atom(name: '_BottomStoreBase.icons');
-
-  @override
-  List<MyIcon> get icons {
-    _$iconsAtom.context.enforceReadPolicy(_$iconsAtom);
-    _$iconsAtom.reportObserved();
-    return super.icons;
-  }
-
-  @override
-  set icons(List<MyIcon> value) {
-    _$iconsAtom.context.conditionallyRunInAction(() {
-      super.icons = value;
-      _$iconsAtom.reportChanged();
-    }, _$iconsAtom, name: '${_$iconsAtom.name}_set');
-  }
-
   final _$_BottomStoreBaseActionController =
       ActionController(name: '_BottomStoreBase');
-
-  @override
-  void setIcons(String select) {
-    final _$actionInfo = _$_BottomStoreBaseActionController.startAction();
-    try {
-      return super.setIcons(select);
-    } finally {
-      _$_BottomStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
 
   @override
   void setIndex(int value) {
@@ -68,7 +41,7 @@ mixin _$BottomStore on _BottomStoreBase, Store {
 
   @override
   String toString() {
-    final string = 'index: ${index.toString()},icons: ${icons.toString()}';
+    final string = 'index: ${index.toString()}';
     return '{$string}';
   }
 }
