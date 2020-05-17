@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import '../../models/colors.rgba.dart';
+import '../../models/icon.model.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.select, this.index}) : super(key: key);
@@ -19,7 +20,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   BottomStore _store = BottomStore();
-  PageController _pageController = PageController();
+  PageController _controller = PageController();
   @override
   Widget build(BuildContext context) {
     List<Widget> _pages = [
@@ -183,6 +184,16 @@ class _HomePageState extends State<HomePage> {
             );
         }
       },
+    );
+  }
+
+  void goAdmin(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => HomePage(
+                select: widget.select,
+              )),
     );
   }
 }
