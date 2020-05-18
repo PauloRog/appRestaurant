@@ -79,6 +79,8 @@ class ProductTile extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) => ProductPage(
                                   product: product,
+                                  icons: icons,
+                                  select: 'edit',
                                 ),
                               ),
                             );

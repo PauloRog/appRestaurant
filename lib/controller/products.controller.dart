@@ -10,6 +10,10 @@ class ProductsController {
     }
   }
 
+  Future<void> add(Product product) async {
+    Firestore.instance.collection('products').add(product.toJson());
+  }
+
   Future<void> update(Product product) async {
     try {
       await Firestore.instance
