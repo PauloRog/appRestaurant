@@ -57,7 +57,25 @@ class ProductTile extends StatelessWidget {
                       children: [
                         FlatButton(
                           onPressed: () {
-                            controller.delete(product.id);
+                            AlertDialog(
+                              title: Text('title'),
+                              content: SingleChildScrollView(
+                                child: ListBody(
+                                  children: <Widget>[
+                                    Text('description')
+                                  ],
+                                ),
+                              ),
+                              actions: <Widget>[
+                                FlatButton(
+                                  onPressed: (){}, //DESCOBRIR COMO CANCELA
+                                  child: Text('Cancelar'),
+                                ),FlatButton(
+                                  onPressed:(){ controller.delete(product.id);},
+                                  child: Text('Deletar'),
+                                ),
+                              ],
+                            );
                           },
                           child: Row(
                             children: [
