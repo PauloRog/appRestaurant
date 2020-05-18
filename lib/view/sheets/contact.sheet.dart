@@ -4,21 +4,23 @@ import 'package:app_restaurant_test/view/widgets/social.item.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class ContactSheet extends StatelessWidget {
+class ContactSheet extends StatefulWidget {
   ContactSheet({Key key, this.select}) : super(key: key);
-
   final String select;
+  @override
+  _ContactSheetState createState() => _ContactSheetState();
+}
 
+class _ContactSheetState extends State<ContactSheet> {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
     return StreamBuilder(
         stream: Firestore.instance
-            .collection(select)
+            .collection(widget.select)
             .document('contact')
             .snapshots(),
-        builder: (contex, snapshot) {
+        builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
             case ConnectionState.waiting:
@@ -30,6 +32,7 @@ class ContactSheet extends StatelessWidget {
               Social social = Social.fromJson(snapshot.data['social']);
               ColorsRgba colorBackground =
                   ColorsRgba.fromJson(snapshot.data['colorBackground']);
+
               return Stack(
                 children: <Widget>[
                   Image(
@@ -39,19 +42,18 @@ class ContactSheet extends StatelessWidget {
                     width: double.infinity,
                   ),
                   Center(
-                    child: Container(
-                      height: screenHeight * 0.65,
-                      width: screenWidth * 0.95,
-                      decoration: BoxDecoration(
-                          color: Color.fromRGBO(
-                              colorBackground.r,
-                              colorBackground.g,
-                              colorBackground.b,
-                              colorBackground.o),
-                          borderRadius: BorderRadius.circular(18)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: ListView(
+                    child: SingleChildScrollView(
+                      child: Container(
+                        width: screenWidth * 0.95,
+                        decoration: BoxDecoration(
+                            color: Color.fromRGBO(
+                                colorBackground.r,
+                                colorBackground.g,
+                                colorBackground.b,
+                                colorBackground.o),
+                            borderRadius: BorderRadius.circular(10)),
+                        margin: EdgeInsets.symmetric(vertical: 50.0),
+                        child: Column(
                           children: <Widget>[
                             SocialItem(
                               item: social.facebook,

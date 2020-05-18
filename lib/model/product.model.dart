@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Product {
   String id;
   String name;
@@ -17,6 +19,17 @@ class Product {
       this.category,
       this.section,
       this.visible});
+
+  Product.fromDocument(DocumentSnapshot snapshot) {
+    id = snapshot.documentID;
+    image = snapshot.data['image'];
+    name = snapshot.data['title'];
+    decription = snapshot.data['description'];
+    price = snapshot.data['price'];
+    category = snapshot.data['category'];
+    section = snapshot.data['section'];
+    visible = snapshot.data['visible'];
+  }
 
   Product.fromJson(Map<String, dynamic> json, String idB) {
     this.id = idB;
