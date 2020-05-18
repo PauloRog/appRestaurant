@@ -31,8 +31,8 @@ class HomePage extends StatelessWidget {
       HomeSheet(
         select: select,
       ),
-      FoodSheet(),
-      DrinkSheet(),
+      FoodSheet(select: select),
+      DrinkSheet(select: select),
       ContactSheet(
         select: select,
       ),

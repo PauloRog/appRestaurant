@@ -1,4 +1,5 @@
 import 'package:app_restaurant_test/store/drop.down.store.dart';
+import 'package:app_restaurant_test/view/pages/add.page.dart';
 import 'package:app_restaurant_test/view/widgets/my.list.view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +7,22 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../models/colors.rgba.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends StatefulWidget {
+  @override
+  _SettingsPageState createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  void goHome(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AddPage()),
+    );
+  }
+
   final List<String> option = ['Opções', 'Principais', 'Porções', 'Bebidas'];
   final DropDownStore store = DropDownStore();
+
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
@@ -124,14 +138,25 @@ class SettingsPage extends StatelessWidget {
                                 Radius.circular(18),
                               ),
                             ),
-                            child: Row(
-                              children: [
-                                SvgPicture.network(
-                                  icons['add'],
-                                  width: screenWidth * 0.15,
-                                ),
-                                Text('ADICIONAR'),
-                              ],
+                            child: FlatButton(
+                              onPressed: () {
+                                goHome(context);
+                              },
+                              child: Row(
+                                children: [
+                                  Flexible(
+                                    flex: 1,
+                                    child: SvgPicture.network(
+                                      icons['add'],
+                                      width: screenWidth * 0.15,
+                                    ),
+                                  ),
+                                  Flexible(
+                                    flex: 2,
+                                    child: Text('ADICIONAR'),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],

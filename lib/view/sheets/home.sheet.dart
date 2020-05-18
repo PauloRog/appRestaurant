@@ -55,8 +55,7 @@ class _HomeSheetState extends State<HomeSheet> {
                                 colorBackground.o),
                             borderRadius: BorderRadius.circular(10)),
                         padding: EdgeInsets.all(20.0),
-                        margin: EdgeInsets.symmetric(
-                            horizontal: 5.0, vertical: 50.0),
+                        margin: EdgeInsets.symmetric(vertical: 50.0),
                         child: Column(
                           children: <Widget>[
                             Text(

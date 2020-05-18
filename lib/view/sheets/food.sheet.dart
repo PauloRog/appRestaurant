@@ -1,5 +1,7 @@
-import 'package:app_restaurant_test/Lists.dart';
+import 'package:app_restaurant_test/models/products.dart';
+import 'package:app_restaurant_test/tiles/product_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FoodSheet extends StatefulWidget {
   FoodSheet({Key key, this.select}) : super(key: key);
@@ -12,52 +14,25 @@ class FoodSheet extends StatefulWidget {
 class _FoodSheetState extends State<FoodSheet> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: Lists().getProdutos(),
+    return FutureBuilder<QuerySnapshot>(
+        future: Firestore.instance
+            .collection('produtos')
+            .document('foods')
+            .collection(widget.select)
+            .getDocuments(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return new Center(
+          if (!snapshot.hasData) {
+            return Center(
               child: CircularProgressIndicator(),
             );
-          } else {
+          } else
             return ListView.builder(
-                shrinkWrap: true,
-                itemCount: snapshot.data.length,
+                padding: EdgeInsets.all(4.0),
+                itemCount: snapshot.data.documents.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    padding: EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.white,
-                    ),
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 5.0, vertical: 5.0),
-                    alignment: Alignment.center,
-                    height: 100.0,
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            height: 50,
-                            width: 100,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20.0),
-                              /* child: Image(
-                                image: NetworkImage(image),
-                                fit: BoxFit.cover,
-                              ), */
-                            ),
-                          ),
-                          Column(
-                            children: <Widget>[],
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
+                  return ProductTile(
+                      Products.fromDocument(snapshot.data.documents[index]));
                 });
-          }
         });
   }
 }
