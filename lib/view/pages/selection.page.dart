@@ -73,7 +73,7 @@ class SelectionPage extends StatelessWidget {
                               Radius.circular(10),
                             ),
                             border: Border.all(
-                              width: 3,
+                              width: 2,
                             ),
                           ),
                           child: SizedBox.expand(
@@ -117,7 +117,7 @@ class SelectionPage extends StatelessWidget {
                               Radius.circular(10),
                             ),
                             border: Border.all(
-                              width: 3,
+                              width: 2,
                             ),
                           ),
                           child: SizedBox.expand(
